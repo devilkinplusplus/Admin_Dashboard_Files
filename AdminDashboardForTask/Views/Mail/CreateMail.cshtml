@@ -1,0 +1,18 @@
+﻿@model EntityLayer.Concreate.FileOperation
+@{
+    ViewData["Title"] = "CreateMail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("CreateMail", "Mail", FormMethod.Post))
+{
+    @Html.Label("To")
+    @Html.DropDownListFor(x=>x.ReceiverID,(List<SelectListItem>)ViewBag.adm,new {@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ReceiverID,"",new{@class="text text-danger"})
+    <br />
+    @Html.Label("Subject")
+    @Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>)ViewBag.val,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.CategoryID,"",new{@class="text text-danger"})
+    <br />
+    <button type="submit" class="btn btn-primary">Send</button>
+}

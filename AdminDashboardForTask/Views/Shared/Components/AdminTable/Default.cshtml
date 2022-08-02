@@ -1,0 +1,32 @@
+﻿@model IEnumerable<EntityLayer.Concreate.Admin>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="table-responsive">
+                        <table class="table table-xs mb-0">
+                            <thead>
+                                <tr>
+                                   <td>Admin</td>
+                                   <td>Email</td>
+                                   <td>Last Login</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Username</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.DateTime.ToString("dd-MMM-yyyy")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

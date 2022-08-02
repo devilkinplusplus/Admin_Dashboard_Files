@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concreate.Category2
+@{
+    ViewData["Title"] = "AddFile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Add New File</h1>
+
+<form class="form-group" action="AddFile"
+      asp-controller="Dashboard" method="post" enctype="multipart/form-data">
+    @Html.Label("File Name")
+    @Html.TextBoxFor(x=>x.FileName,new{@class="form-control" ,autocomplete="off"})
+    @Html.ValidationMessageFor(x=>x.FileName,"",new {@class="text text-danger"})
+    <br />
+
+    @Html.Label("File Url")<br />
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                   aria-describedby="inputGroupFileAddon01"  name="FileURL" >
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+    </div>
+    @Html.ValidationMessageFor(x=>x.FileURL,"",new {@class="text text-danger"})
+    <br />
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

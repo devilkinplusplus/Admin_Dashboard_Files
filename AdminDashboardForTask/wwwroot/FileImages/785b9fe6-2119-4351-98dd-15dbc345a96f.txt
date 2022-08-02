@@ -1,0 +1,119 @@
+Git öyrenirem
+
+Ad ve Emaili beyan etmek üçün kod :
+-Config -- duzenlemek  
+$ git config --global user.name "Ilkin"
+$ git config --global user.email "rufullayevilkin66@gmail.com"
+
+Commands :
+Hansi dosyanın içinde olduğumuzu görə bilərik:
+$ pwd 
+
+İçində olduğumuz faylın sahib olduğu fayl ve senedleri göre bilerik:
+$ ls
+$ ls -a (Gizli dosyalari da gosterir)
+
+Dosyalar arasi hereket ucun:
+$cd
+$cd Desktop Desktopa gedir
+
+Dosyalar arasi hereketde geri getmek ucun
+$ cd ..
+
+Qovluq yaratmak ucun:
+$ mkdir dosyadi
+
+Fayl yaratmaq ucun:
+$ touch index.html
+
+Yaradilan fayla terminaldan elave etmek ucun:
+$ vi index.html (yaza bilmek ucun press I )
+
+Yaradilan faylin icinden cixmaq ucun:
+>Esc > : > wq
+Esce basdiqdan sonra iki noqte ve wq yazib entere basaraq cixa bilerik!
+
+
+Yaradilan faylda edilen deyisiklikleri gormek ucun:
+$ code index.php
+
+Fayli silmek ucun:
+$ rm index.php
+
+Qovluq silmek ucun:
+$ rm -r dizin
+
+
+Git repositori yaratmaq ucun kommand:
+$ git init
+
+
+$ git status (Commit edilen dosyalarla islediyimiz fayldaki fayllarin ferqinin gosteren command)
+
+$ git add index.html (index.html faylini commite hazir veziyyete getir) (from untracked to stage)
+
+$ git add .  (get all the file from untracked to stage)
+
+$ git rm --cached index.html (from stage to untracked)
+
+$ git commit -m "message" (from stage to local)
+
+$ git reset 1884c9a --hard  (1884c9a idli commitden baslayaraq en son commite qeder sil ve qayit)
+
+$ git reset 1884c9a --soft  (1884c9a commite qayit ondan sonra yaranan commitleri stage area hissesine dasi)
+
+$ git revert 1ccc177   (id li commiti tersine cevir yeni edilen deyisikliyi sil)
+
+$ git commit --amend -m "style.css edited"  (edit last commit name)
+
+$ git branch dal-1  (dal-1 adinda branch (budaq) yaradildi)
+
+$ git checkout dal-1 (switch to dal-1 branch)
+
+$ git checkout 15j23j5 (bu idli commite don)
+
+$ git checkout -b feature1 (create and switch to branch feature1 ) (hansi branchin uzerinden yaratsaq onun commitleri gorunecek)
+
+$ git branch -D dal-1 (Delete dal-1 branch)
+
+$ git merge feature1 (cari branchla feature1 branchini birlesdir)
+
+
+Localdaki fayllari Githuba dasimaq ucun evvelce Githubda repository yaradiriq!
+sonra oradaki HTTP linkini copy edirik
+
+$ git push https://github.com/devilkinplusplus/gitLearning.git master 
+
+(ve hemin linkle birlikde hansi branchdaki fayllari push edeceyikse belirtirik)
+
+
+$ git remote add origin https://github.com/devilkinplusplus/gitLearning.git  (linke origin adin verdik)
+$ git remote -v (listele)
+
+
+$ git clone git://github.com/abcdef/ornek.git (basqa bir reponu copy et)
+
+
+$ git fetch origin (uzaq repodaki deyisiklikleri locala getir)
+
+$ git merge origin/master (sonra update)
+
+$ git pull origin master (uzaq repodaki deyisiklikleri locala getir v merge et)
+
+.gitignore - gizletmek istediyimiz fayllar ucun (gizletmek istediyimiz fayllari .gitignore un icine yazriq)
+
+$ git stash save "text duzenlendi" (Save et sonra yeniden deyisecek fayllari xeta almamaq ucun)
+
+$ git stash list 
+
+$ git stash show -p 0  
+
+$ git stash drop (Delete  stash)
+
+$ git stash pop 0 (bring back last stash)
+
+$ git checkout -- yazi.txt (yazi.txt de edilen deyisiklikleri geri al)
+
+$ git diff (show diff)
+
+$ mv text.txt readme.txt (change file name)

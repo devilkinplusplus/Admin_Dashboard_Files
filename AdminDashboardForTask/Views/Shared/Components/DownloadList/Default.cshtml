@@ -1,0 +1,37 @@
+﻿@model List<EntityLayer.Concreate.DownloadOperation>
+<div class="row">
+    @foreach (var item in Model.Where(x => x.DownloadFileStatus == true))
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-3">
+                <span style="text-align:right;">
+                    <a href="/Mail/CategoryStatus/@item.CategoryID"
+                   class="btn btn-danger btn-sm">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </span>
+                <div class="card-body">
+                    <h3 class="card-title text-white">
+                        @item.Category.FileName
+                    </h3>
+                    <div class="d-inline-block">
+                        <h2 class="text-white">Downloaded</h2>
+                        <p class="text-white mb-0">
+                            @item.DownloadDate.ToString("dd-MMM-yyyy")
+                        </p>
+                    </div>
+                    <span class="float-right display-5 opacity-5">
+                        <i class="fa fa-file-archive-o"></i>
+                    </span>
+                </div>
+                <span style="text-align:left;">
+                    <a href="/Dashboard/DownloadFile/@item.CategoryID"
+                   class="btn btn-secondary btn-sm">
+                        <i class="fa fa-arrow-circle-down"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    }
+</div>
+

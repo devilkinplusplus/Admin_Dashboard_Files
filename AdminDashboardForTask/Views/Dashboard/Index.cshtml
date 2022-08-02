@@ -1,0 +1,94 @@
+﻿@model IEnumerable<EntityLayer.Concreate.Category>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!--Cards-->
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-1">
+                <span style="text-align:right;">
+                    <a data-id="@item.CategoryID"
+                   class="btn btn-danger btn-sm"
+                   onclick="return functionConfirm(this)">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </span>
+                <div class="card-body">
+                    <h3 class="card-title text-white">
+                        @item.FileName
+                    </h3>
+                    <div class="d-inline-block">
+                        <h2 class="text-white">You added</h2>
+                        <p class="text-white mb-0">@item.Date.ToString("dd-MMM-yyyy")</p>
+                    </div>
+                    <span class="float-right display-5 opacity-5">
+                        <i class="fa fa-file-archive-o"></i>
+                    </span>
+                </div>
+                  <span style="text-align:left;">
+                    <a href="/Dashboard/DownloadFile/@item.CategoryID"
+                   class="btn btn-secondary btn-sm">
+                        <i class="fa fa-arrow-circle-down"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    }
+</div>
+<a href="/Dashboard/AddFile" class="btn btn-primary">Add New File</a>
+<br />
+<br />
+
+@await Component.InvokeAsync("DownloadList")
+<!--Table-->
+@await Component.InvokeAsync("AdminTable")
+
+<!--Social media-->
+@await Component.InvokeAsync("AdminSocialMedias")
+
+@section Scripts{
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" integrity="sha512-gOQQLjHRpD3/SEOtalVq50iDn4opLVup2TF8c4QPI3/NmUPNZOk2FG0ihi8oCU/qYEsw4P6nuEZT2lAG0UNYaw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" integrity="sha512-7VTiy9AhpazBeKQAlhaLRUk+kAMAb8oczljuyJHPsVPWox/QIXDFOnT9DUk1UC8EbnHKRdQowT7sOBe7LAjajQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function functionConfirm(event) {
+        swal({
+            title: 'Are you sure?',
+            text: "You will not be able to recover this item!",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Yes',
+            confirmButtonClass: 'btn btn-success'
+            }, function (isConfirm) {
+                var id = $(event).data('id');
+                if (!isConfirm) return;
+                $.ajax({
+                    type: "Get",
+                    data:{id:id},
+                    url: '/Dashboard/DeleteFile/'+id,
+                    success: function () {
+                        location.reload(true);
+                        },
+                    error: function (req, status, error) {
+                        console.log(msg);
+                    }
+                });
+        });
+    }
+
+</script>
+}

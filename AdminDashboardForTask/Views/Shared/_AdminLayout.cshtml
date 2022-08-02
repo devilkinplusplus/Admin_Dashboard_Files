@@ -1,0 +1,102 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <link rel="icon" type="~/theme/image/png" sizes="16x16" href="images/favicon.png">
+    <link href="~/theme/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <b class="logo-abbr"><img src="~/theme/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="~/theme/images/logo-compact.png" alt=""></span>
+                    <span class="brand-title">
+                        <img src="~/theme/images/logo-text.png" alt="">
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="header">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li>
+                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/Dashboard/Index">See Files</a></li>
+                            <li><a href="/Dashboard/AddFile">Add File</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i> 
+                            <span class="nav-text">Email</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/Mail/Inbox">Inbox</a></li>
+                            <li><a href="/Mail/Sent">Sent</a></li>
+                            <li><a href="/Mail/CreateMail">Compose</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/Login/LogOut" aria-expanded="false">
+                            <i class="icon-logout menu-icon"></i><span class="nav-text">Log out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-body">
+           
+
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/theme/plugins/common/common.min.js"></script>
+    <script src="~/theme/js/custom.min.js"></script>
+    <script src="~/theme/js/settings.js"></script>
+    <script src="~/theme/js/gleek.js"></script>
+    <script src="~/theme/js/styleSwitcher.js"></script>
+    @RenderSection("Scripts",false)
+</body>
+</html>
