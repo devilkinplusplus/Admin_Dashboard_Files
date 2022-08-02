@@ -78,14 +78,21 @@ namespace AdminDashboardForTask.Controllers
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), uploadPath, filename);
             var memory = new MemoryStream();
-            if (System.IO.File.Exists(path))
+            try
             {
-                var net = new System.Net.WebClient();
-                var data = net.DownloadData(path);
-                var content = new System.IO.MemoryStream(data);
-                memory = content;
+                if (System.IO.File.Exists(path))
+                {
+                    var net = new System.Net.WebClient();
+                    var data = net.DownloadData(path);
+                    var content = new System.IO.MemoryStream(data);
+                    memory = content;
+                }
+                memory.Position = 0;
             }
-            memory.Position = 0;
+            catch (Exception)
+            {
+                memory.Close();
+            }
             return memory;
         }
 
